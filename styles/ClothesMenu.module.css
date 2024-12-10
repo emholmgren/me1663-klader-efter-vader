@@ -1,12 +1,11 @@
 .clothingmenu {
     position: relative;
     width: 100vw;
-    overflow-x: scroll; 
+    overflow-x: scroll;
+    scrollbar-width: thin;
     height: 200px;
-    border: 5px solid rgb(54, 54, 54);
     display: flex;
     top: 30px;
-    background-color: rgb(252, 252, 252);
     gap: 10px;
 }
 
@@ -15,4 +14,6 @@
     float: left;
     width: 100%;
     height: 100%;
+    background-color: rgb(252, 252, 252);
+    box-shadow: 5px 3px 10px rgba(0, 0, 0, 0.26);
 }

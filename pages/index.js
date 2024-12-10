@@ -40,15 +40,15 @@ export default function Home() {
         setBackgroundClass(newBackgroundClass);
 
         // Fetch location name
-        /*const locationResponse = await fetch(
+        const locationResponse = await fetch(
           `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`
         );
-        const locationJson = await locationResponse.json();*/
+        const locationJson = await locationResponse.json();
 
         setWeatherData({
           temperature: weatherJson.current_weather.temperature,
           weather: weatherDescription.description,
-          /*city: locationJson.address.city || locationJson.address.village || "Okänd plats",*/
+          city: locationJson.address.city || locationJson.address.village || "Okänd plats",
         });
 
       });

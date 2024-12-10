@@ -1,6 +1,6 @@
 import styles from '../styles/ClothesMenu.module.css'
 
-const clothesOptions = ["boots.png", "coat.png", "gloves.png", "hat.png", "raincoat.png", "scarf.png", "shorts.png", "sunglasses.png", "tshirt.png", "umbrella.png"];
+const clothesOptions = ["boots.png", "coat.png", "gloves.png", "hat.png", "raincoat.png", "scarf.png", "shorts.png"];
 
 export default function ClothesMenu({ setClothes, clothes }) {
   const toggleClothing = (clothing) => {
