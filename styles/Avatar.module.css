@@ -1,0 +1,9 @@
+.avatar {
+    position: relative;
+    width: 400px;
+    height: 400px;
+};
+
+.avatar img {
+    width: 100%;
+};
