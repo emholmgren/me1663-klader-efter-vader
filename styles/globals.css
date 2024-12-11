@@ -1,6 +1,7 @@
 html,
 body {
   /*background-color: #f8fafc;*/
+  height: vh; /* Make body as high as viewers window */
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,

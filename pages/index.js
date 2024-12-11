@@ -15,7 +15,7 @@ import { getBackgroundClass } from "../utils/backgroundClassGetter";
 export default function Home() {
   const [weatherData, setWeatherData] = useState(null);
   const [backgroundClass, setBackgroundClass] = useState("default-bg");
-  const [clothes, setClothes] = useState([]);
+  const [selectedClothes, setSelectedClothes] = useState([]);
 
   const fetchWeather = async () => {
 
@@ -76,8 +76,8 @@ export default function Home() {
           <button onClick={fetchWeather}>Hämta väder</button>
         </div>
         <Header title="Hjälp pandan att välja rätt kläder!"/>
-        <Avatar weatherData={weatherData} clothes={clothes} />
-        <ClothesMenu setClothes={setClothes} clothes={clothes} />
+        <Avatar weatherData={weatherData} selectedClothes={selectedClothes} />
+        <ClothesMenu selectedClothes={selectedClothes} setSelectedClothes={setSelectedClothes} />
       </main>
 
       <Footer />

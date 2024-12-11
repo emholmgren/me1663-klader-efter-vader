@@ -1,3 +1,4 @@
+// Translate weather code into text description
 export function mapWeatherCode(code) {
     if (code === 0) return { description: "Klar himmel" };
     if ([1, 2, 3].includes(code)) return { description: "Molnigt" };
