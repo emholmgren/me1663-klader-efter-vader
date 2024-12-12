@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import styles from '../styles/ClothesMenu.module.css'
 
-const clothesOptions = [
+// List of src for clothing images, Important: The order determines Z-index (order of layers)
+export const clothesOptions = [
   "boots.png",
-  "coat.png",
+  "shorts.png",
   "gloves.png",
-  "hat.png",
+  "coat.png",
   "raincoat.png",
+  "hat.png",
   "scarf.png",
-  "shorts.png"
 ];
 
 export default function ClothesMenu({ selectedClothes, setSelectedClothes }) {
@@ -51,13 +52,9 @@ export default function ClothesMenu({ selectedClothes, setSelectedClothes }) {
 };
 
   return (
-    <div className={styles.carousel}>
-
-      <button className={styles.navButton} onClick={prevPage}>
-        ←
-      </button>
 
       <div className={styles.clothingmenu}>
+      <button onClick={prevPage} className={styles.navButton}>←</button>
         {visibleClothes.map((clothing, index) => (
           <img
             key={index}
@@ -69,12 +66,8 @@ export default function ClothesMenu({ selectedClothes, setSelectedClothes }) {
             }`}
           />
         ))}
+        <button onClick={nextPage} className={styles.navButton}>→</button>
       </div>
 
-      <button className={styles.navButton} onClick={nextPage}>
-        →
-      </button>
-
-    </div>
   );
 }

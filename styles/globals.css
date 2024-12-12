@@ -35,7 +35,7 @@ main {/* Page general format */
   padding: 2vw;
 
   border-radius: 10px;
-  border: green 2px solid;
+  /*border: green 2px solid;*/
 
   text-align: center;
 }
@@ -68,19 +68,20 @@ p {
 
 button {
   background-color: #51ff00;
-  line-height: 0.5; /* Center button text vertically */
-  color: rgb(0, 43, 0);
-  font-weight: bold;
   border: none;
   padding: 20px;
-  cursor: pointer;
+
+  line-height: 1; /* Center button text vertically */
+  color: rgb(0, 43, 0);
+  font-weight: bold;
+
   font-size: 20px;
   border-radius: 5px; /* Make buttons round */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Adding some shadow */
 }
 
 button:hover {
-  transform: scale(1.1); /* Zoom-effect on hover */
+  transform: scale(1.01); /* Zoom-effect on hover */
 }
 
 /*
@@ -184,4 +185,17 @@ button:hover {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+}
+
+.carousel {
+  display: flex;
+  flex-direction: row;
+
+  align-items: center; /* Center content vertically */
+  /*justify-content: center;*/ /* Center content horisontally */
+
+  /*gap: 10px; *//* Distance between arrows and menu */
+  margin: 20px auto; /* Adds some margin around the menu */
+  width: 90vw;
+  max-width: 1200px;
 }

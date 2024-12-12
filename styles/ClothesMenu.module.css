@@ -1,41 +1,32 @@
-.carousel {
+.clothingmenu {
     display: flex;
-    flex-direction: row !important;
+    flex-direction: row; /* Align clothes horisontally */
     align-items: center; /* Center content vertically */
-    justify-content: center; /* Center content horisontally */
-    gap: 10px; /* Distance between arrows and menu */
-    margin: 20px 0; /* Adds some margin around the menu */
+    justify-content: space-evenly;
     width: 100%;
 }
 
-.carousel button.navButton {
+.navButton {
     background-color: #ffffff; /* Light background for arrows*/
     border: none;
     padding: 10px;
     cursor: pointer;
-    font-size: 20px;
     border-radius: 50%; /* Make buttons round */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Adding some shadow */
+    border: grey 2px solid;
+    height: 40px;
+    margin: auto 0;
 }
 
-.carousel button.navButton:hover {
+.navButton:hover {
     transform: scale(1.1); /* Zoom-effect on hover */
-}
-
-.clothingmenu {
-    display: flex;
-    flex-direction: row; /* Align clothes horisontally */
-    gap: 10px; /* Distance between clothing images */
-    overflow: hidden; /* Hide images outside the view */
-
+    background-color: #eeeeee;
 }
 
 .clothingmenu img {
-    width: 8em; /* Size of clothes */
+    max-width: 12em; /* Size of clothes */
     height: auto;
-    object-fit: cover;
+    /*object-fit: cover;*/
     cursor: pointer;
-    transition: transform 0.2s; /* Animation when clicking */
 }
 
 .clothingmenu img:hover {
@@ -44,6 +35,6 @@
 
 .selected {
     border: 3px solid green;
-    border-radius: 5px;
+    border-radius: 10px;
     padding: 2px;
   }
