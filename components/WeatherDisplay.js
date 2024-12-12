@@ -1,9 +1,11 @@
+import styles from '../styles/WeatherDisplay.module.css'
+
 export default function WeatherDisplay({ weatherData }) {
-    if (!weatherData) return <div>Hämta väderinfo för att spela...</div>;
+    if (!weatherData) return <p>Hämta plats för att spela...</p>;
   
     return (
       <div>
-        <h3>{weatherData.city}</h3>
+        <p>{weatherData.city}</p>
         <p>{weatherData.temperature}°C</p>
         <p>{weatherData.weather}</p>
       </div>

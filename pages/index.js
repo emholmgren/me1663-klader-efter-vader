@@ -56,28 +56,37 @@ export default function Home() {
     }
   };
 
-  // Update background
-  //const backgroundClass = weatherData ? getBackgroundClass(weatherData.weather) : "default-bg";
-
-  console.log("Weather data:", weatherData);
-  console.log("Bakgrundsklass:", backgroundClass);
-
   return (
-    <div className={`container ${backgroundClass}`}>
+    <div>
 
       <Head>
         <title>Kläder efter väder</title>
         <link rel="icon" href="/favicon.ico" />
+        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+        <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet"/>
       </Head>
 
       <main>
-        <div className="weather">
-          <WeatherDisplay weatherData={weatherData} />
-          <button onClick={fetchWeather}>Hämta väder</button>
+
+        <div  className={`${backgroundClass}`}>
+          <div className="container weather">
+            <WeatherDisplay weatherData={weatherData} />
+            <button onClick={fetchWeather}>HÄMTA VÄDER</button>
+          </div>
+          <div className="container">
+            {/*<Header title="Hjälp pandan att välja rätt kläder!"/>*/}
+            <h1>Hjälp Pandy att välja rätt kläder!</h1>
+          </div>
+          <div className="container">
+            <Avatar weatherData={weatherData} selectedClothes={selectedClothes} />
+          </div>
         </div>
-        <Header title="Hjälp pandan att välja rätt kläder!"/>
-        <Avatar weatherData={weatherData} selectedClothes={selectedClothes} />
-        <ClothesMenu selectedClothes={selectedClothes} setSelectedClothes={setSelectedClothes} />
+
+        <div className="container">
+          <ClothesMenu selectedClothes={selectedClothes} setSelectedClothes={setSelectedClothes} />
+        </div>
+
       </main>
 
       <Footer />

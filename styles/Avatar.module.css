@@ -1,5 +1,7 @@
 .avatar {
+    align-self: center;
     position: relative;
+    margin: 100px auto 0 auto;
     width: 400px;
     height: 400px;
 };

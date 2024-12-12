@@ -1,13 +1,14 @@
 .carousel {
     display: flex;
-    flex-direction: row;
+    flex-direction: row !important;
     align-items: center; /* Center content vertically */
     justify-content: center; /* Center content horisontally */
     gap: 10px; /* Distance between arrows and menu */
     margin: 20px 0; /* Adds some margin around the menu */
+    width: 100%;
 }
 
-.navButton {
+.carousel button.navButton {
     background-color: #ffffff; /* Light background for arrows*/
     border: none;
     padding: 10px;
@@ -17,7 +18,7 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Adding some shadow */
 }
 
-.navButton:hover {
+.carousel button.navButton:hover {
     transform: scale(1.1); /* Zoom-effect on hover */
 }
 
@@ -26,7 +27,7 @@
     flex-direction: row; /* Align clothes horisontally */
     gap: 10px; /* Distance between clothing images */
     overflow: hidden; /* Hide images outside the view */
-    max-width: 100%; /* Responsive menu */
+
 }
 
 .clothingmenu img {
