@@ -12,17 +12,18 @@ export const clothesOptions = [
   "scarf.png",
 ];
 
-export default function ClothesMenu({ selectedClothes, setSelectedClothes }) {
+export default function ClothesMenu({ selectedClothes, setSelectedClothes, weatherData }) {
 
+  // Set up visible clothing items
   const [startIndex, setStartIndex] = useState(0);
   const itemsPerPage = 5;
 
-  // Move to next page
+  // Function that moves 5 next spaces in clothing menu
   const nextPage = () => {
     setStartIndex((prevIndex) => (prevIndex + 1) % clothesOptions.length);
   };
 
-  // Move to previous page
+  // Function that moves 5 previous spaces in clothing menu
   const prevPage = () => {
     setStartIndex(
       (prevIndex) =>

@@ -2,21 +2,18 @@ import { useState, useEffect } from 'react';
 import styles from '../styles/Avatar.module.css'
 import { clothesOptions } from './ClothesMenu'; // Determine z-index of clothes
 
+// Funciton that receives data about current weather and clothing items selected by user
+// Sets a default mood for avatar, and upon game starting turns sad
+// Checks if user selects correct clothing combinations suitable for current weather
+// Using clothes not suitable is not allowed
+// When correct combination, avatar turns happy
+// Returns component with avatar image and selected clothing items in front of avatar
 export default function Avatar({ weatherData, selectedClothes }) {
-  // let avatarMood = "default.png";
 
-    /*if (weatherData) {
-      const { temperature, weather } = weatherData;
-      if ([51, 53, 55, 61, 63, 65, 80, 81, 82].includes(weather)) {
-        avatarMood = "wet.png";
-      } else {
-        avatarMood = "sad.png";
-      }
-    }*/
+  // Initial mood
+  const [avatarMood, setAvatarMood] = useState("default.png");
 
-    const [avatarMood, setAvatarMood] = useState("default.png"); // Initial mood
-
-    // Control weatherdata
+  // Control weatherdata
   const temperature = weatherData?.temperature || null;
   const weatherCode = weatherData?.weathercode || null;
 
@@ -26,34 +23,62 @@ export default function Avatar({ weatherData, selectedClothes }) {
   const requiredClothesForHot = ["shorts.png"];
   const requiredClothesForRainy = ["raincoat.png", "boots.png"];
 
+  // Change mood according to chosen clothes
   useEffect(() => {
     if (temperature !== null) {
       let requiredClothes = [];
+      let invalidClothes = [];
       let isComboCorrect = false;
 
-      // Temperatur under 10°C
+      // Temperature below 10°C
       if (temperature < 10) {
         requiredClothes = [...requiredClothesForCold];
-        // Kontrollera om minst ett av de extra plaggen är valt (gloves, hat, scarf)
+
+        // Wrong clothes for cold weather
+        invalidClothes = ["shorts.png", "raincoat.png"];
+
+        // Make sure at least one additional item is chosen (gloves, hat, scarf)
         const hasAdditionalColdClothing = additionalColdClothes.some(item => selectedClothes.includes(item));
-        isComboCorrect = requiredClothes.every(item => selectedClothes.includes(item)) && hasAdditionalColdClothing;
+        isComboCorrect = 
+          requiredClothes.every(item => selectedClothes.includes(item)) && hasAdditionalColdClothing &&
+          !selectedClothes.some(item => invalidClothes.includes(item));
       }
-      // Temperatur över 25°C
-      else if (temperature > 25) {
+
+      // Temperature above 20°C
+      else if (temperature > 20) {
         requiredClothes = requiredClothesForHot;
-        isComboCorrect = requiredClothes.every(item => selectedClothes.includes(item));
+
+        // Wrong clothes for hot weather
+        invalidClothes = [
+          "boots.png",
+          "coat.png",
+          "gloves.png",
+          "hat.png",
+          "scarf.png",
+          "raincoat.png"
+        ];
+
+        isComboCorrect = 
+          requiredClothes.every(item => selectedClothes.includes(item)) && 
+          !selectedClothes.some(item => invalidClothes.includes(item));
       }
-      // Regn
+
+      // Rain
       else if (weatherCode === 51 || weatherCode === 53 || weatherCode === 61 || weatherCode === 63) { // exempel på regn
         requiredClothes = requiredClothesForRainy;
-        isComboCorrect = requiredClothes.every(item => selectedClothes.includes(item));
+
+        // Wrong clothes for hot weather
+        invalidClothes = ["shorts.png"];
+
+        isComboCorrect = 
+          requiredClothes.every(item => selectedClothes.includes(item)) && 
+          !selectedClothes.some(item => invalidClothes.includes(item));
       }
 
-      // Sätt avataren beroende på om kombinationen är korrekt
+      // Set avatar based on if combination is correct
       setAvatarMood(isComboCorrect ? "happy.png" : "sad.png");
     }
-  }, [weatherData, selectedClothes]); // Uppdatera när vädret eller valda kläder ändras
-
+  }, [weatherData, selectedClothes]); // Update when weather or chosen clothes changes
 
 
     return (

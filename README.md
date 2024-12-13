@@ -1,3 +1,11 @@
+/*
+
+Made by: Elli Kaltsidou, Emily Holmgren, Iana Brandis
+Course: ME1663 Digital Prototyputveckling
+Date:
+
+*/
+
 # Next + Netlify Starter
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/46648482-644c-4c80-bafb-872057e51b6b/deploy-status)](https://app.netlify.com/sites/next-dev-starter/deploys)
