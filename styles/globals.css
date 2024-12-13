@@ -79,7 +79,11 @@ button:hover {
 
 /* Molnigt */
 .cloudy {
-  background: linear-gradient(to bottom, #d3d3d3, #808080);
+  background: linear-gradient(to bottom, #d3d3d3, #808080); /* Backup if image is not available */
+  background-image: url("../public/backgrounds/cloudy-bg.png");
+  background-size: cover;
+  background-position: center bottom 25%;
+  background-repeat: no-repeat;
 }
 
 /* Dimma */
@@ -104,7 +108,12 @@ button:hover {
 
 /* Snö */
 .snowy {
-  background: linear-gradient(to bottom, #ffffff, #d9faff);
+  background: linear-gradient(to bottom, #ffffff, #d9faff); /* Backup if image is not available */
+  background-image: url("../public/backgrounds/snowy-bg.png");
+  background-size: cover;
+  background-position: center bottom 25%;
+  background-repeat: no-repeat;
+
   animation: snow-animation 4s linear infinite;
 }
 
