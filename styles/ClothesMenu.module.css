@@ -38,3 +38,12 @@
     border-radius: 10px;
     padding: 2px;
   }
+
+@media (max-width: 1200px) {
+    /*.selected {
+        border: 3px solid red;
+    }*/
+    .clothingmenu img {
+        max-width: 8em;
+    }
+}
