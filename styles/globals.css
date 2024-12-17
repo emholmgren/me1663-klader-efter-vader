@@ -23,7 +23,7 @@ main {/* Page general format */
 .container { /* Base format for content containers */
   width: 90vw;
   max-width: 1200px; /* Limit on large screens */
-  margin: 15px auto; /* Keep content spaced and centered */
+  margin: 0px auto; /* Keep content spaced and centered */
   padding: 2vw;
 
   border-radius: 10px;
@@ -64,6 +64,8 @@ button {
 
 button:hover {
   transform: scale(1.01); /* Zoom-effect on hover */
+  background-color: #bdff9c;
+  border: 2px solid #51ff00;
 }
 
 /*
@@ -157,6 +159,7 @@ button:hover {
 */
 
 .weather {
+  margin-top: 10px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -186,7 +189,7 @@ button:hover {
   /*justify-content: center;*/ /* Center content horisontally */
 
   /*gap: 10px; *//* Distance between arrows and menu */
-  margin: 20px auto; /* Adds some margin around the menu */
+  margin: 0 auto; /* Adds some margin around the menu */
   width: 90vw;
   max-width: 1200px;
 }

@@ -45,12 +45,28 @@ export default function ClothesMenu({ selectedClothes, setSelectedClothes, weath
 
   // Function to add or remove clothes from character
   const toggleClothing = (item) => {
-    if (selectedClothes.includes(item)) {
-        setSelectedClothes(selectedClothes.filter((clothing) => clothing !== item)); // Remove item from list
-    } else {
-        setSelectedClothes([...selectedClothes, item]); // Add item to list
+    const jackets = ["coat.png", "raincoat.png"];
+
+    if (jackets.includes(item)) {
+      const hasOtherJacket = selectedClothes.some(
+        (clothing) => jackets.includes(clothing) && clothing !== item
+      );
+
+      if (hasOtherJacket) {
+        setSelectedClothes([
+          ...selectedClothes.filter((clothing) => !jackets.includes(clothing)),
+          item,
+        ]);
+        return;
+      }
     }
-};
+
+    if (selectedClothes.includes(item)) {
+      setSelectedClothes(selectedClothes.filter((clothing) => clothing !== item));
+    } else {
+      setSelectedClothes([...selectedClothes, item]);
+    }
+  };
 
   return (
 

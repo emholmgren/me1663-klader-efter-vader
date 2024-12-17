@@ -1,4 +1,4 @@
-import styles from '../styles/WeatherDisplay.module.css'
+
 
 export default function WeatherDisplay({ weatherData }) {
     if (!weatherData) return <p>Hämta plats för att spela...</p>;
