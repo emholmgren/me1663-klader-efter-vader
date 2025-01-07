@@ -14,7 +14,7 @@
     border-radius: 50%; /* Make buttons round */
     border: grey 2px solid;
     height: 40px;
-    margin: auto 0;
+    margin: 0 0;
 }
 
 .navButton:hover {
@@ -39,7 +39,7 @@
     padding: 2px;
   }
 
-@media (max-width: 1200px) {
+@media (max-width: 1200px) or (max-height: 900px) {
     /*.selected {
         border: 3px solid red;
     }*/

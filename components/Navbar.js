@@ -9,6 +9,7 @@ export default function Navbar() {
             </div>
             <nav>
                 <ul className={styles.navLinks}>
+                    <li><Link href="/game">Spela</Link></li>
                     <li><Link href="/weather-facts">Väderfakta för barn</Link></li>
                     <li><Link href="/parent-tips">Tips för föräldrar</Link></li>
                     <li><Link href="/about-us">Om oss</Link></li>

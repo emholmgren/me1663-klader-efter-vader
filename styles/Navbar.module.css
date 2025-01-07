@@ -29,3 +29,9 @@
   .navLinks li a:hover {
     color: #ffdd57;
   }
+
+  @media (max-width: 1200px) or (max-height: 900px) {
+    .navbar {
+      padding: 2px;
+    }
+}

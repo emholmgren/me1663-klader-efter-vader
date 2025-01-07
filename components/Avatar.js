@@ -8,10 +8,10 @@ import { clothesOptions } from './ClothesMenu'; // Determine z-index of clothes
 // Using clothes not suitable is not allowed
 // When correct combination, avatar turns happy
 // Returns component with avatar image and selected clothing items in front of avatar
-export default function Avatar({ weatherData, selectedClothes }) {
+export default function Avatar({ weatherData, selectedClothes, setAvatarMood }) {
 
   // Initial mood
-  const [avatarMood, setAvatarMood] = useState("default.png");
+  const [localAvatarMood, setLocalAvatarMood] = useState("default.png");
 
   // Control weatherdata
   const temperature = weatherData?.temperature || null;
@@ -80,14 +80,17 @@ export default function Avatar({ weatherData, selectedClothes }) {
     console.log("Is combination correct?", isComboCorrect);
 
       // Set avatar based on if combination is correct
-      setAvatarMood(isComboCorrect ? "happy.png" : "sad.png");
+      const mood = isComboCorrect ? "happy.png" : "sad.png";
+      setLocalAvatarMood(mood);
+      setAvatarMood(mood); // Send to parent
+//      setAvatarMood(isComboCorrect ? "happy.png" : "sad.png");
     }
   }, [weatherData, selectedClothes]); // Update when weather or chosen clothes changes
 
 
     return (
         <div className={styles.avatar}>
-          <img src={`/avatars/${avatarMood}`} alt="avatar" style={{ width: "100%" }} />
+          <img src={`/avatars/${localAvatarMood}`} alt="avatar" style={{ width: "100%" }} />
           {selectedClothes.map((clothing, index) => (
             <img
               key={index}

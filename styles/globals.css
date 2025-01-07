@@ -49,10 +49,6 @@ main {/* Page general format */
 */
 
 button {
-  background-color: #51ff00;
-  border: none;
-  padding: 20px;
-
   line-height: 1; /* Center button text vertically */
   color: rgb(0, 43, 0);
   font-weight: bold;
@@ -62,10 +58,21 @@ button {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Adding some shadow */
 }
 
+.weather button {
+  background-color: #4caf50; /* Green */
+  border: none;
+  color: white;
+  padding: 0px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
 button:hover {
   transform: scale(1.01); /* Zoom-effect on hover */
-  background-color: #bdff9c;
-  border: 2px solid #51ff00;
+  background-color: #78d449;
+  border: 2px solid #4caf50;
 }
 
 /*
@@ -163,22 +170,17 @@ button:hover {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  height: 110px;
-  padding: 20px 50px;
+  height: 65px;
+  padding: 5px;
 
   box-shadow: 5px 3px 10px rgba(0, 0, 0, 0.26);
   background-color: white;
 };
 
-.weather button {
-  background-color: #04AA6D; /* Green */
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
+.weather div {
+  display:flex;
+  flex-direction: row;
+  gap: 10px;
 }
 
 .carousel {

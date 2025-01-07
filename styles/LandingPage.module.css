@@ -3,8 +3,8 @@
   background-image: url('/backgrounds/deafult-bg.png');
   background-size: cover;
   background-position: center;
-  color: white;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.301);
+  color: rgb(20, 25, 66);
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
   height: 100vh;
 }
 
@@ -20,6 +20,10 @@
 .heroText {
   max-width: 600px;
   margin-bottom: 2rem;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
 }
 
 .heroText h1 {
@@ -32,10 +36,6 @@
   line-height: 1.5;
 }
 
-.ctaButtons {
-  margin-top: 2rem;
-}
-
 .ctaButton {
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
@@ -44,12 +44,12 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  margin: 0 1rem;
-  transition: background-color 0.3s;
+  margin: 1rem auto;
 }
 
 .ctaButton:hover {
-  background-color: #c13d27;
+  background-color: rgb(243, 62, 30);
+  border:#ff2600 solid 2px;
 }
 
 .heroImage img {

@@ -1,21 +1,22 @@
 import { useState } from 'react';
-import axios from 'axios';
 
 import Head from 'next/head'
 import Navbar from '../components/Navbar';
 import Header from '@components/Header'
 import Footer from '@components/Footer'
 
+import WeatherDisplay from "../components/WeatherDisplay";
+import Message from "../components/Message";
 import Avatar from "../components/Avatar";
 import ClothesMenu from "../components/ClothesMenu";
-import WeatherDisplay from "../components/WeatherDisplay";
 
 import { mapWeatherCode } from "../utils/weatherCodeMapper";
 import { getBackgroundClass } from "../utils/backgroundClassGetter";
 
-import styles from '../styles/Game.module.css';
-
 export default function Home() {
+  
+  const [avatarMood, setAvatarMood] = useState("default.png");
+
   const [weatherData, setWeatherData] = useState(null);
   const [backgroundClass, setBackgroundClass] = useState("default-bg");
   const [selectedClothes, setSelectedClothes] = useState([]);
@@ -74,17 +75,18 @@ export default function Home() {
 
       <main>
 
-        <div  className={`${backgroundClass}`}>
+        <div className={`${backgroundClass}`}>
           <div className="container weather">
-            <WeatherDisplay weatherData={weatherData} />
             <button onClick={fetchWeather}>HÄMTA VÄDER</button>
+            <WeatherDisplay weatherData={weatherData} />
           </div>
+
           <div className="container">
-            {/*<Header title="Hjälp pandan att välja rätt kläder!"/>*/}
-            <h1 className="message">Hjälp Pandy att välja rätt kläder!</h1>
+            <Message weatherData={weatherData} selectedClothes={selectedClothes} avatarMood={avatarMood} />
           </div>
+
           <div className="container">
-            <Avatar weatherData={weatherData} selectedClothes={selectedClothes} />
+            <Avatar weatherData={weatherData} selectedClothes={selectedClothes} setAvatarMood={setAvatarMood} />
           </div>
         </div>
 

@@ -71,7 +71,7 @@ export default function ClothesMenu({ selectedClothes, setSelectedClothes, weath
   return (
 
       <div className={styles.clothingmenu}>
-      <button onClick={prevPage} className={styles.navButton}>←</button>
+        <button onClick={prevPage} className={styles.navButton}>←</button>
         {visibleClothes.map((clothing, index) => (
           <img
             key={index}
