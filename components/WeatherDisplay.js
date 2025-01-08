@@ -1,13 +1,13 @@
 import styles from '../styles/WeatherDisplay.module.css';
 
 export default function WeatherDisplay({ weatherData }) {
-    if (!weatherData) return <p>Hämta plats för att spela...</p>;
-  
     return (
-      <div className="weather-text">
-        <p>{weatherData.city}</p>
-        <p>{weatherData.temperature}°C</p>
-        <p>{weatherData.weather}</p>
+      <div className={styles.weatherDisplay}>
+        <p className={styles.city}>{weatherData.city}</p>
+        <div className={styles.weatherDetails}>
+          <p>{weatherData.temperature}°C</p>
+          <p>{weatherData.weather}</p>
+        </div>
       </div>
     );
   }

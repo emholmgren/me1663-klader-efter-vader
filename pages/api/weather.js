@@ -2,8 +2,6 @@ import axios from 'axios';
 
 export default async function handler(req, res) {
 
-    //const { location } = req.query;
-
     try {
 
         // Endpoint: Fetch weather

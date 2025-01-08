@@ -2,32 +2,41 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
+    padding: 0.5rem 2rem;
+
     background-color: #4caf50;
     color: white;
+    font-weight: 600;
   }
   
   .logo a {
+    margin-left: 1rem;
     text-decoration: none;
     font-size: 1.5rem;
     color: white;
   }
-  
+
+  .logo a:hover {
+    color: #ffdd57;
+    font-size: 1.53rem;
+  }
+
   .navLinks {
+    margin-right: 1rem;
     list-style: none;
     display: flex;
     gap: 1.5rem;
   }
-  
+
   .navLinks li a {
     text-decoration: none;
     color: white;
     font-size: 1rem;
-    transition: color 0.3s;
   }
   
   .navLinks li a:hover {
     color: #ffdd57;
+    font-size: 1.05rem;
   }
 
   @media (max-width: 1200px) or (max-height: 900px) {

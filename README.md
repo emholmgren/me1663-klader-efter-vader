@@ -1,34 +1,48 @@
-/*
+# Klä Mig Rätt © 2025 All Rights Reserved
 
-Made by: Elli Kaltsidou, Emily Holmgren, Iana Brandis
-Course: ME1663 Digital Prototyputveckling
-Date:
+### Authors: Elli Kaltsidou, Emily Holmgren, Iana Brandis
+This web application was created for the course **ME1663 - Digital Prototyputveckling HT 2024** at Blekinge Tekniska Högskola.
 
-*/
+**The aim of the project** was to practice data collection via API, and visualising this in some matter.
+We have chosen to create a weather webapp for children (ages 4-6) that represents the weather changes in text, the mood of an avatar and the environment around them.
 
-# Next + Netlify Starter
+## Project Structure
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/46648482-644c-4c80-bafb-872057e51b6b/deploy-status)](https://app.netlify.com/sites/next-dev-starter/deploys)
+### Framework
+This is a [`Next.js`](https://nextjs.org/) v15 project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) and hosted on [`Netlify`](https://kladereftervader.netlify.app/).
 
-This is a [Next.js](https://nextjs.org/) v15 project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) and set up to be instantly deployed to [Netlify](https://url.netlify.com/SyTBPVamO)!
+### /components
+Holds components to be reused across pages or shorten code for complex pages.
+Recurring components include **Navbar.js** and **Footer.js** that are used on all pages for the webapp.
+The remaining components **Avatar.js**, **ClothesMenu.js**, **Message.js** and **WeatherDisplay.js** are used for the page **/pages/game.js** to simplify the complexity and length of code.
 
-This project is a very minimal starter that includes 2 sample components, a global stylesheet, a `netlify.toml` for deployment, and a `jsconfig.json` for setting up absolute imports and aliases. With Netlify, you'll have access to features like Preview Mode, server-side rendering/incremental static regeneration via Netlify Functions, and internationalized routing on deploy automatically.
+### /pages
+Includes four pages:
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/netlify-templates/next-netlify-starter&utm_source=github&utm_medium=nextstarter-cs&utm_campaign=devex-cs)
+* **index.js** - Landing page with a hero text, avatar image and CTA-button.
 
-(If you click this button, it will create a new repo for you that looks exactly like this one, and sets that repo up immediately for deployment on Netlify)
+* **parent-tips.js** - Simple text material with information for parents.
 
-## Table of Contents:
+* **weather-facts.js** - Simple text material with weather facts for kids. Planned to be made interactive with sounds and animations.
 
-- [Getting Started](#getting-started)
-- [Installation options](#installation-options)
-- [Testing](#testing)
-  - [Included Default Testing](#included-default-testing)
-  - [Removing Renovate](#removing-renovate)
+* **game.js** - Contains the heart of the web application.
 
-## Getting Started
+### Game.js
+Contains CTA, API calls, visualisation and user interaction.
+Consists of a Home() function with set variables. Asks user to share location, which is used to fetch current local weather description, temperature and city name. The weather data is used to update the background image, weather display, avatar mood and clothing requirements. The user interaction builds on selecting clothes from a menu to change the avatar's clothes and changing their mood from sad to happy.
 
-First, run the development server:
+### /public
+Images used in this project. Separates the images in categories /avatars, /backgrounds and /clothes.
+
+### /styles
+Stylesheets for global elements and components.
+
+### /utils
+Isolated functions to translate weather data to other formats.
+
+## Run the app locally
+
+If you want to run the app locally on your computer, run the development server in the terminal:
 
 ```bash
 npm run dev
@@ -36,36 +50,4 @@ npm run dev
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-### Installation options
-
-**Option one:** One-click deploy
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/netlify-templates/next-netlify-starter&utm_source=github&utm_medium=nextstarter-cs&utm_campaign=devex-cs)
-
-**Option two:** Manual clone
-
-1. Clone this repo: `git clone https://github.com/netlify-templates/next-netlify-starter.git`
-2. Navigate to the directory and run `npm install`
-3. Run `npm run dev`
-4. Make your changes
-5. Connect to [Netlify](https://url.netlify.com/Bk4UicocL) manually (the `netlify.toml` file is the one you'll need to make sure stays intact to make sure the export is done and pointed to the right stuff)
-
-## Testing
-
-### Included Default Testing
-
-We’ve included some tooling that helps us maintain these templates. This template currently uses:
-
-- [Renovate](https://www.mend.io/free-developer-tools/renovate/) - to regularly update our dependencies
-- [Cypress](https://www.cypress.io/) - to run tests against how the template runs in the browser
-- [Cypress Netlify Build Plugin](https://github.com/cypress-io/netlify-plugin-cypress) - to run our tests during our build process
-
-If your team is not interested in this tooling, you can remove them with ease!
-
-### Removing Renovate
-
-In order to keep our project up-to-date with dependencies we use a tool called [Renovate](https://github.com/marketplace/renovate). If you’re not interested in this tooling, delete the `renovate.json` file and commit that onto your main branch.
+Open [`http://localhost:3000`](http://localhost:3000) with your browser to see the result.

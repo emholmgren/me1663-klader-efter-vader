@@ -2,64 +2,67 @@ import { useState, useEffect } from 'react';
 import styles from '../styles/Avatar.module.css'
 import { clothesOptions } from './ClothesMenu'; // Determine z-index of clothes
 
-// Funciton that receives data about current weather and clothing items selected by user
-// Sets a default mood for avatar, and upon game starting turns sad
-// Checks if user selects correct clothing combinations suitable for current weather
-// Using clothes not suitable is not allowed
-// When correct combination, avatar turns happy
-// Returns component with avatar image and selected clothing items in front of avatar
+/*
+-----------------------------------------------------------------------------------
+Avatar()
+-----------------------------------------------------------------------------------
+* Receives data about current weather and clothing items selected by user.
+* Sets a default mood for avatar, and upon game starting turns sad.
+* Checks if user selects correct clothing combinations suitable for current weather.
+* Using clothes not suitable is not allowed.
+* When user has chosen correct combination of clothes, avatar turns happy.
+* Returns component with avatar image and selected clothing items in front of avatar
+-----------------------------------------------------------------------------------
+*/
 export default function Avatar({ weatherData, selectedClothes, setAvatarMood }) {
 
-  // Initial mood
+  // Initial avatar mood and image
   const [localAvatarMood, setLocalAvatarMood] = useState("default.png");
 
-  // Control weatherdata
-  const temperature = weatherData?.temperature || null;
-  const weatherCode = weatherData?.weather || null;
-
-  // Define clothing combinations
+  // Define allowed clothing combinations
   const requiredClothesForCold = ["boots.png", "coat.png"];
   const additionalColdClothes = ["gloves.png", "hat.png", "scarf.png"];
   const requiredClothesForHot = ["shorts.png"];
   const requiredClothesForRainy = ["raincoat.png", "boots.png"];
 
-  // Change mood according to chosen clothes
+  // Control if weather data is fetched
+  const temperature = weatherData?.temperature || null;
+  const weatherCode = weatherData?.weather || null;
+
+  // Change mood according to chosen clothes and weather
   useEffect(() => {
 
-    console.log("Weather data:", weatherData);
-
+    // Start if weather is fetched
     if (temperature !== null) {
+
+      // Variables to list allowed clothing options
       let requiredClothes = [];
       let invalidClothes = [];
-      let isComboCorrect = false;
+      let isComboCorrect = false; // Keeps avatar sad until combo is correct
 
-      // Log för felsökning
-    console.log("Current weatherCode:", weatherCode);
-    console.log("Selected clothes:", selectedClothes);
-
-    // Rain
-    if (weatherCode === "Duggregn" || weatherCode === "Regn" || weatherCode === "Regnskurar") {
+    // If rain
+    if (weatherCode === "DUGGREGN 🌧️" || weatherCode === "REGN 🌧️" || weatherCode === "REGNSKURAR 🌧️") {
       requiredClothes = requiredClothesForRainy;
       invalidClothes = ["shorts.png"];
-      
-      isComboCorrect =
+      isComboCorrect = // Check if selection follows allowed clothes
         requiredClothes.every(item => selectedClothes.includes(item)) &&
         !selectedClothes.some(item => invalidClothes.includes(item));
     }
 
-      // Temperature below 10°C
+      // If temperature below 10°C
       else if (temperature < 10) {
         requiredClothes = [...requiredClothesForCold];
         invalidClothes = ["shorts.png", "raincoat.png"];
 
         // Make sure at least one additional item is chosen (gloves, hat, scarf)
         const hasAdditionalColdClothing = additionalColdClothes.some(item => selectedClothes.includes(item));
+
         isComboCorrect = 
           requiredClothes.every(item => selectedClothes.includes(item)) && hasAdditionalColdClothing &&
           !selectedClothes.some(item => invalidClothes.includes(item));
       }
 
-      // Temperature above 20°C
+      // If temperature above 20°C
       else if (temperature > 20) {
         requiredClothes = requiredClothesForHot;
         invalidClothes = [
@@ -76,17 +79,12 @@ export default function Avatar({ weatherData, selectedClothes, setAvatarMood }) 
           !selectedClothes.some(item => invalidClothes.includes(item));
       }
 
-      // Log för resultat
-    console.log("Is combination correct?", isComboCorrect);
-
       // Set avatar based on if combination is correct
       const mood = isComboCorrect ? "happy.png" : "sad.png";
       setLocalAvatarMood(mood);
       setAvatarMood(mood); // Send to parent
-//      setAvatarMood(isComboCorrect ? "happy.png" : "sad.png");
     }
   }, [weatherData, selectedClothes]); // Update when weather or chosen clothes changes
-
 
     return (
         <div className={styles.avatar}>

@@ -1,6 +1,15 @@
+.header {
+    margin: 30px auto 10px auto;
+    text-align: center;
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+
 .textPages {
     width: 70vw;
     margin: 30px auto;
+    padding: 30px;
+    background-color: white;
 
     display: flex;
     flex-direction: row;
@@ -11,8 +20,4 @@
 
 .textPages div {
     max-width: 400px;
-}
-
-.header {
-    color: green;
 }

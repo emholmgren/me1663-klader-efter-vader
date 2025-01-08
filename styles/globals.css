@@ -4,7 +4,7 @@
   --------------------------------------
 */
 
-html { /* Border box */
+html { /* Border box*/
   box-sizing: border-box;
 }
 
@@ -18,18 +18,6 @@ main {/* Page general format */
   min-height: 80vh; /* Main covers entire window height, placing footer at bottom */
   display: flex; /* Make main a flexbox */
   flex-direction: column;
-}
-
-.container { /* Base format for content containers */
-  width: 90vw;
-  max-width: 1200px; /* Limit on large screens */
-  margin: 0px auto; /* Keep content spaced and centered */
-  padding: 2vw;
-
-  border-radius: 10px;
-  /*border: green 2px solid;*/
-
-  text-align: center;
 }
 
 /*
@@ -50,43 +38,56 @@ main {/* Page general format */
 
 button {
   line-height: 1; /* Center button text vertically */
-  color: rgb(0, 43, 0);
   font-weight: bold;
-
-  font-size: 20px;
   border-radius: 5px; /* Make buttons round */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Adding some shadow */
+  cursor: pointer;
 }
 
-.weather button {
-  background-color: #4caf50; /* Green */
+.weatherButton {
+  background-color: #eb4e1e;
   border: none;
   color: white;
-  padding: 0px 15px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
+
+  font-size: 1.5rem;
+  padding: 15px;
+  margin: 20px auto 50px 40px; /* Lock position upper left*/
+
+  animation: pulse 2s infinite;
 }
 
-button:hover {
-  transform: scale(1.01); /* Zoom-effect on hover */
-  background-color: #78d449;
-  border: 2px solid #4caf50;
+.weatherButton:hover {
+  background-color: #ED3621;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  }
+  50% {
+    transform: scale(1.03); /* Ökar storleken */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.61); /* Ökar ljuseffekten */
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  }
 }
 
 /*
-  -----------------
-  || BACKGROUNDS //
-  -----------------
+  ------------------------------------------------------------
+  || BACKGROUNDS (changed with classes according to weather //
+  ------------------------------------------------------------
 */
 
-/* Klar himmel */
+html {
+  background-color:#c3f5ff;
+}
+
 .clear-sky {
   background: linear-gradient(to bottom, #87ceeb, #f0f8ff);
 }
 
-/* Molnigt */
 .cloudy {
   background: linear-gradient(to bottom, #d3d3d3, #808080); /* Backup if image is not available */
   background-image: url("../public/backgrounds/cloudy-bg.png");
@@ -95,62 +96,26 @@ button:hover {
   background-repeat: no-repeat;
 }
 
-/* Dimma */
 .foggy {
   background: linear-gradient(to bottom, #bfbfbf, #e6e6e6);
 }
 
-/* Regn */
 .rainy {
   background: linear-gradient(to bottom, #4a90e2, #00509e);
-  animation: rain-animation 2s linear infinite;
 }
 
-@keyframes rain-animation {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 0 100%;
-  }
-}
-
-/* Snö */
 .snowy {
   background: linear-gradient(to bottom, #ffffff, #d9faff); /* Backup if image is not available */
   background-image: url("../public/backgrounds/snowy-bg.png");
   background-size: cover;
   background-position: center bottom 25%;
   background-repeat: no-repeat;
-
-  animation: snow-animation 4s linear infinite;
 }
 
-@keyframes snow-animation {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 0 100%;
-  }
-}
-
-/* Åskstorm */
 .thunderstorm {
   background: linear-gradient(to bottom, #000000, #434343);
-  animation: thunder-animation 3s linear infinite;
 }
 
-@keyframes thunder-animation {
-  0%, 100% {
-    background-color: #000;
-  }
-  50% {
-    background-color: #808080;
-  }
-}
-
-/* Standardbakgrund */
 .default-bg {
   background: linear-gradient(to bottom, #ffffff, #f0f8ff); /* Backup if image is not available */
   background-image: url("../public/backgrounds/deafult-bg.png");
@@ -159,39 +124,100 @@ button:hover {
   background-repeat: no-repeat;
 }
 
-/*
-  ------------------------
-  || WEATHER CONTAINER //
-  ------------------------
-*/
-
-.weather {
-  margin-top: 10px;
+/* CLOTHING MENU */
+.clothesMenuWrapper {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  height: 65px;
-  padding: 5px;
-
-  box-shadow: 5px 3px 10px rgba(0, 0, 0, 0.26);
-  background-color: white;
-};
-
-.weather div {
-  display:flex;
-  flex-direction: row;
-  gap: 10px;
+  align-items: center;
+  justify-content: space-between; /* To place buttons on either side */
+  position: relative;
+  width: 90%;
+  margin: 10px auto;
+  /*height: 10rem;*/
 }
 
+/* BUTTONS */
+.menuButton  {
+  position: relative;
+  padding: 1rem;
+  border-radius: 50%; /* Make buttons round */
+
+  background-color: #eb701e;
+  border: #eb701e 3px solid;
+  color: #ffffff;
+  font-size: 2rem;
+  animation: pulse 2s infinite;
+}
+
+.menuButton:hover {
+  background-color: #ff8b3d;
+  color: white;
+  border: #ff8b3d 4px solid;
+}
+
+@keyframes pulse {
+0% {
+  transform: scale(1);
+  box-shadow: 0 0 2px rgb(0, 0, 0);
+}
+50% {
+  transform: scale(1.03); /* Ökar storleken */
+  box-shadow: 0 0 3px rgb(0, 0, 0); /* Ökar ljuseffekten */
+}
+100% {
+  transform: scale(1);
+  box-shadow: 0 0 2px rgb(0, 0, 0);
+}
+}
+
+/* CLOTHING MENU */
+
 .carousel {
+  flex: 1; /* Take up all available space */
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center; /* Center clothing menu vertically */
+  gap: 30px;
+  height: 100%;
+  overflow: hidden;
+}
 
-  align-items: center; /* Center content vertically */
-  /*justify-content: center;*/ /* Center content horisontally */
+/* CLOTHING IMAGES */
 
-  /*gap: 10px; *//* Distance between arrows and menu */
-  margin: 0 auto; /* Adds some margin around the menu */
-  width: 90vw;
-  max-width: 1200px;
+.carouselImage {
+  flex: 1; /* Take up all available space */
+  max-width: 15%; /* Size of clothes */
+  height: auto;
+
+  cursor: pointer;
+  border: #eb701e 3px solid;
+  border-radius: 20px;
+  background-color: white;
+
+  transition: transform 0.3s ease; /* Smooth scaling effect */
+}
+
+.carouselImage:hover {
+  transform: scale(1.1); /* Zoom-effect on hover */
+}
+
+.selected {
+  border: 3px solid rgb(6, 170, 6) !important;
+  border-radius: 10px !important;
+  background-color: rgb(214, 255, 214) !important;
+}
+
+/* FOOTER */
+.footer {
+  width: 100%;
+  height: 100px;
+  border-top: 1px solid #eaeaea;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  font-weight: bold;
+  color: rgb(128, 190, 248);
 }

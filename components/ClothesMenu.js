@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import styles from '../styles/ClothesMenu.module.css'
 
-// List of src for clothing images, Important: The order determines Z-index (order of layers)
+// List of src for clothing images
+// !Important: The order determines Z-index (order of layers)
 export const clothesOptions = [
   "boots.png",
   "shorts.png",
@@ -12,7 +12,19 @@ export const clothesOptions = [
   "scarf.png",
 ];
 
-export default function ClothesMenu({ selectedClothes, setSelectedClothes, weatherData }) {
+/*
+-----------------------------------------------------------------------------------
+ClothesMenu()
+-----------------------------------------------------------------------------------
+* Sets up a limited number of slots for clothing images to be visible in the clothing menu.
+* Uses indeces to allow user to move down the list of clothes to be visible.
+* Controls which clothing items user selects.
+* If the avatar already is wearing the item, it is removed - otherwise added to avatar.
+* Blocks user from stacking several coats by replacing with the latest selected coat.
+* Returns previous and next button, and maps out clothing menu images and statuses.
+-----------------------------------------------------------------------------------
+*/
+export default function ClothesMenu({ selectedClothes, setSelectedClothes }) {
 
   // Set up visible clothing items
   const [startIndex, setStartIndex] = useState(0);
@@ -37,6 +49,7 @@ export default function ClothesMenu({ selectedClothes, setSelectedClothes, weath
     startIndex + itemsPerPage
   );
 
+  // Restart the list to not run out of clothes
   if (visibleClothes.length < itemsPerPage) {
     visibleClothes.push(
       ...clothesOptions.slice(0, itemsPerPage - visibleClothes.length)
@@ -45,9 +58,13 @@ export default function ClothesMenu({ selectedClothes, setSelectedClothes, weath
 
   // Function to add or remove clothes from character
   const toggleClothing = (item) => {
+
+    // Not allowed to use coat and raincoat at the same time
     const jackets = ["coat.png", "raincoat.png"];
 
+    // If avatar is wearing another coat, replace with the last selected
     if (jackets.includes(item)) {
+
       const hasOtherJacket = selectedClothes.some(
         (clothing) => jackets.includes(clothing) && clothing !== item
       );
@@ -61,29 +78,41 @@ export default function ClothesMenu({ selectedClothes, setSelectedClothes, weath
       }
     }
 
+    // If avatar is wearing selected clothing item, remove it - otherwise add it on
     if (selectedClothes.includes(item)) {
       setSelectedClothes(selectedClothes.filter((clothing) => clothing !== item));
     } else {
       setSelectedClothes([...selectedClothes, item]);
     }
+
   };
 
   return (
 
-      <div className={styles.clothingmenu}>
-        <button onClick={prevPage} className={styles.navButton}>←</button>
-        {visibleClothes.map((clothing, index) => (
-          <img
-            key={index}
-            src={`/clothes/${clothing}`}
-            alt={clothing}
-            onClick={() => toggleClothing(clothing)}
-            className={`${styles.clothingItem} ${
-              selectedClothes.includes(clothing) ? styles.selected : ""
-            }`}
-          />
-        ))}
-        <button onClick={nextPage} className={styles.navButton}>→</button>
+      <div className="clothesMenuWrapper">
+
+        <button onClick={prevPage} className="menuButton">
+          🡨
+        </button>
+
+        <div className="carousel">
+          {visibleClothes.map((clothing, index) => (
+            <img
+              key={index}
+              src={`/clothes/${clothing}`}
+              alt={clothing}
+              onClick={() => toggleClothing(clothing)}
+              className={`carouselImage ${
+                selectedClothes.includes(clothing) ? "selected" : ""
+              }`}
+            />
+          ))}
+        </div>
+
+        <button onClick={nextPage} className="menuButton">
+          🡪
+        </button>
+
       </div>
 
   );

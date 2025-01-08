@@ -5,14 +5,14 @@ export default function Navbar() {
     return (
         <header className={styles.navbar}>
             <div className={styles.logo}>
-                <Link href="/">🌤️Klä mig rätt!</Link>
+                <Link href="/">🌤️KLÄ MIG RÄTT!</Link>
             </div>
             <nav>
                 <ul className={styles.navLinks}>
-                    <li><Link href="/game">Spela</Link></li>
-                    <li><Link href="/weather-facts">Väderfakta för barn</Link></li>
-                    <li><Link href="/parent-tips">Tips för föräldrar</Link></li>
-                    <li><Link href="/about-us">Om oss</Link></li>
+                    <li><Link href="/game">SPELA</Link></li>
+                    <li><Link href="/weather-facts">VÄDERFAKTA</Link></li>
+                    <li><Link href="/parent-tips">TIPS FÖR FÖRÄLDRAR</Link></li>
+                    {/*<li><Link href="/about-us">Om oss</Link></li>*/}
                 </ul>
             </nav>
         </header>
